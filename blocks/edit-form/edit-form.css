@@ -1,0 +1,13 @@
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    padding-left: 36px;
+
+}
+
+@media screen and (max-width: 767px) {
+    .edit-form {
+    padding: 0;
+    align-items: center;
+}
+}
