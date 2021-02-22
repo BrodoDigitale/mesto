@@ -6,6 +6,9 @@
     border-bottom: 1px solid rgba(0,0,0,0.2);
     width: 358px;
     height: 27px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .edit-form__input:first-of-type {

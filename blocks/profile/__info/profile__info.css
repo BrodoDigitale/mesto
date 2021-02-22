@@ -6,9 +6,8 @@
 
    @media screen and (max-width: 767px) {
     .profile__info {
-    flex-direction: column;
-    width: 100%;
-    margin-bottom: 20px;
- 
-}
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }

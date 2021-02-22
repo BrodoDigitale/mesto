@@ -14,7 +14,7 @@
         <main class="content">
             <section class="profile">
                 <div class="profile__info">
-                    <img class="profile__avatar" src="./images/Старик Букашкин.jpg" alt="фото профиля">
+                    <img class="profile__avatar" src="./images/Старик_Букашкин.jpg" alt="фото профиля">
                     <div class="profile__grid">
                       <div class="profile__name-wrapper">
                         <h1 class="profile__name">Б.У. Кашкин</h1>
@@ -24,7 +24,7 @@
                         <p class="profile__about">Уральский поэт</p>
                     </div>
                 </div>
-                <button class="add-button transition" type="button">
+                <button class="profile__add-button transition" type="button">
                 </button>
             </section>
             <section class="elements">
@@ -96,14 +96,13 @@
             <p class="footer__copyright">&#169; 2021 Mesto Russia</p>
         </footer>
     </div>
-</div>
 <section class=popup>
     <div class="popup__container">
-        <button class="popup__close-button"></button>
-        <form action="" class="edit-form">
+        <button class="popup__close-button transition"></button>
+        <form class="edit-form">
             <h1 class="edit-form__header">Редактировать профиль</h1>
-            <input class="edit-form__input" type="text" name="profile_name" value="Б.У.Кашкин" required>
-            <input class="edit-form__input"type="text" name="profile__about" value="Уральский поэт" required>
+            <input class="edit-form__input edit-form__name" type="text" name="edit-form__name" value="Б.У.Кашкин" required>
+            <input class="edit-form__input edit-form__about" type="text" name="edit-form__about" value="Уральский поэт" required>
             <button class="edit-form__button" type="submit">Сохранить</button>
         </form>
     </div>

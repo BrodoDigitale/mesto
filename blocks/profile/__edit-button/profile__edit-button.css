@@ -1,12 +1,12 @@
 .profile__edit-button {
- background-image: url(../../../images/Edit_Button.png);
- background-color: transparent;
- padding: 0;
- border: none;
- width: 24px;
- height: 24px;
- position: relative;
- bottom: 0.5em;
+    background-image: url(../../../images/Edit_Button.png);
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    bottom: 0.5em;
 }
 
 @media screen and (max-width: 767px) {
@@ -15,5 +15,5 @@
         height: 18px;
         background-image: url(../../../images/Edit_Button_18px.png);
         bottom: 0.3em;
-}
+    }
 }
