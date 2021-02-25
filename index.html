@@ -9,7 +9,7 @@
 <body class="body">
     <div class="root"> 
         <header class="header">
-                <img class="header__logo" src="./images/logo_mesto.png" alt="логотип Место">
+                <img class="header__logo" src="./images/Logo_mesto.svg" alt="логотип Место">
         </header>
         <main class="content">
             <section class="profile">
@@ -18,62 +18,62 @@
                     <div class="profile__grid">
                       <div class="profile__name-wrapper">
                         <h1 class="profile__name">Б.У. Кашкин</h1>
-                        <button class="profile__edit-button transition" type="button">
+                        <button class="profile__edit-button transition" type="button" aria-label="Редактировать_профиль">
                         </button>
                       </div>
                         <p class="profile__about">Уральский поэт</p>
                     </div>
                 </div>
-                <button class="profile__add-button transition" type="button">
+                <button class="profile__add-button transition" type="button" aria-label="Добавить_изображение">
                 </button>
             </section>
             <section class="elements">
-                <ul class="elements__list">
+                 <ul class="elements__list">
                     <li class="elements__item">
-                            <img  class="elements__img" src="./images/Чердынь.jpg" alt="Чердынь">
+                        <img  class="elements__img" src="./images/Чердынь.jpg" alt="Чердынь">
                         <div class="elements__title">
-                            <p class="elements__title-text">Чердынь</p>
-                            <button class="elements__like-icon" type="button">
+                            <h2 class="elements__title-text">Чердынь</h2>
+                            <button class="elements__like-icon" type="button" aria-label="Нравится">
                             </button>
                         </div>
                     </li>
                     <li class="elements__item">
-                            <img  class="elements__img" src="./images/Кунгур.jpg" alt="Кунгур">
+                        <img  class="elements__img" src="./images/Кунгур.jpg" alt="Кунгур">
                         <div class="elements__title">
-                            <p class="elements__title-text">Кунгур</p>
-                            <button class="elements__like-icon" type="button">
+                            <h2 class="elements__title-text">Кунгур</h2>
+                            <button class="elements__like-icon" type="button" aria-label="Нравится">
                             </button>
                         </div>
                     </li>
                     <li class="elements__item">
-                            <img  class="elements__img" src="./images/Хохловка.jpg" alt="Хохловка">
+                        <img  class="elements__img" src="./images/Хохловка.jpg" alt="Хохловка">
                         <div class="elements__title">
-                            <p class="elements__title-text">Хохловка</p>
-                            <button class="elements__like-icon" type="button">
+                            <h2 class="elements__title-text">Хохловка</h2>
+                            <button class="elements__like-icon" type="button" aria-label="Нравится">
                             </button>
                         </div>
                     </li>
                     <li class="elements__item">
-                            <img  class="elements__img" src="./images/Чусовая.jpg" alt="Чусовая">
+                        <img  class="elements__img" src="./images/Чусовая.jpg" alt="Чусовая">
                         <div class="elements__title">
-                            <p class="elements__title-text">Чусовая</p>
-                            <button class="elements__like-icon" type="button">
+                            <h2 class="elements__title-text">Чусовая</h2>
+                            <button class="elements__like-icon" type="button" aria-label="Нравится">
                             </button>
                         </div>
                     </li>
                     <li class="elements__item">
-                            <img  class="elements__img" src="./images/Пермь.jpg" alt="Пермь">
+                        <img  class="elements__img" src="./images/Пермь.jpg" alt="Пермь">
                         <div class="elements__title">
-                            <p class="elements__title-text">Пермь</p>
-                            <button class="elements__like-icon" type="button">
+                            <h2 class="elements__title-text">Пермь</h2>
+                            <button class="elements__like-icon" type="button" aria-label="Нравится">
                             </button>
                         </div>
                     </li>
                     <li class="elements__item">
-                            <img  class="elements__img" src="./images/Зюраткуль.jpg" alt="Зюраткуль">
+                        <img  class="elements__img" src="./images/Зюраткуль.jpg" alt="Зюраткуль">
                         <div class="elements__title">
-                            <p class="elements__title-text">Зюраткуль</p>
-                            <button class="elements__like-icon" type="button">
+                            <h2 class="elements__title-text">Зюраткуль</h2>
+                            <button class="elements__like-icon" type="button" aria-label="Нравится">
                             </button>
                         </div>
                     </li>
@@ -86,12 +86,12 @@
     </div>
 <section class=popup>
     <div class="popup__container">
-        <button class="popup__close-button transition"></button>
-        <form class="edit-form">
-            <h1 class="edit-form__header">Редактировать профиль</h1>
-            <input class="edit-form__input edit-form__name" type="text" name="edit-form__name" value="Б.У.Кашкин" required>
-            <input class="edit-form__input edit-form__about" type="text" name="edit-form__about" value="Уральский поэт" required>
-            <button class="edit-form__button" type="submit">Сохранить</button>
+        <button class="popup__close-button transition" type="button" aria-label="Закрыть"></button>
+        <form class="edit-form" name="edit-form">
+            <h2 class="edit-form__header">Редактировать профиль</h2>
+            <input class="edit-form__input edit-form__name" type="text" name="edit-form__name" value="" required>
+            <input class="edit-form__input edit-form__about" type="text" name="edit-form__about" value="" required>
+            <button class="edit-form__button" type="submit" aria-label="Сохранить">Сохранить</button>
         </form>
     </div>
 </section>
