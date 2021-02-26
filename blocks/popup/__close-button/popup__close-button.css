@@ -2,21 +2,21 @@
     background-color: transparent;
     padding: 0;
     border: none;
-    width: 30px;
-    height: 30px;
+    width: 55px;
+    height: 55px;
     background-image: url(../../../images/Close_Icon.svg);
     background-size: cover;
     position: absolute;
-    left: 434px;
-    top: -37px;
+    left: 422px;
+    top: -48px;
     color: #FFF;
 }
 
 @media screen and (max-width: 767px) {
     .popup__close-button{
-        width: 20px;
-        height: 20px;
-        left: 253px;
-        top: -43px;
+        width: 35px;
+        height: 35px;
+        left: 248px;
+        top: -50px;
     }
 }
