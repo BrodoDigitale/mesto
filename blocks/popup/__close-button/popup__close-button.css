@@ -7,7 +7,7 @@
     background-image: url(../../../images/Close_Icon.svg);
     background-size: cover;
     position: absolute;
-    left: 422px;
+    right: -50px;
     top: -48px;
     color: #FFF;
 }
@@ -16,7 +16,7 @@
     .popup__close-button{
         width: 35px;
         height: 35px;
-        left: 248px;
+        right: 0px;
         top: -50px;
     }
 }

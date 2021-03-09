@@ -29,54 +29,6 @@
             </section>
             <section class="elements">
                  <ul class="elements__list">
-                    <li class="elements__item">
-                        <img  class="elements__img" src="./images/Чердынь.jpg" alt="Чердынь">
-                        <div class="elements__title">
-                            <h2 class="elements__title-text">Чердынь</h2>
-                            <button class="elements__like-icon" type="button" aria-label="Нравится">
-                            </button>
-                        </div>
-                    </li>
-                    <li class="elements__item">
-                        <img  class="elements__img" src="./images/Кунгур.jpg" alt="Кунгур">
-                        <div class="elements__title">
-                            <h2 class="elements__title-text">Кунгур</h2>
-                            <button class="elements__like-icon" type="button" aria-label="Нравится">
-                            </button>
-                        </div>
-                    </li>
-                    <li class="elements__item">
-                        <img  class="elements__img" src="./images/Хохловка.jpg" alt="Хохловка">
-                        <div class="elements__title">
-                            <h2 class="elements__title-text">Хохловка</h2>
-                            <button class="elements__like-icon" type="button" aria-label="Нравится">
-                            </button>
-                        </div>
-                    </li>
-                    <li class="elements__item">
-                        <img  class="elements__img" src="./images/Чусовая.jpg" alt="Чусовая">
-                        <div class="elements__title">
-                            <h2 class="elements__title-text">Чусовая</h2>
-                            <button class="elements__like-icon" type="button" aria-label="Нравится">
-                            </button>
-                        </div>
-                    </li>
-                    <li class="elements__item">
-                        <img  class="elements__img" src="./images/Пермь.jpg" alt="Пермь">
-                        <div class="elements__title">
-                            <h2 class="elements__title-text">Пермь</h2>
-                            <button class="elements__like-icon" type="button" aria-label="Нравится">
-                            </button>
-                        </div>
-                    </li>
-                    <li class="elements__item">
-                        <img  class="elements__img" src="./images/Зюраткуль.jpg" alt="Зюраткуль">
-                        <div class="elements__title">
-                            <h2 class="elements__title-text">Зюраткуль</h2>
-                            <button class="elements__like-icon" type="button" aria-label="Нравится">
-                            </button>
-                        </div>
-                    </li>
                 </ul>
             </section>
         </main>
@@ -84,17 +36,44 @@
             <p class="footer__copyright">&#169; 2021 Mesto Russia</p>
         </footer>
     </div>
-<section class=popup>
-    <div class="popup__container">
-        <button class="popup__close-button transition" type="button" aria-label="Закрыть"></button>
-        <form class="edit-form" name="edit-form">
-            <h2 class="edit-form__header">Редактировать профиль</h2>
-            <input class="edit-form__input edit-form__input_value_name" type="text" name="edit-form__name" value="" required>
-            <input class="edit-form__input edit-form__input_value_about" type="text" name="edit-form__about" value="" required>
-            <button class="edit-form__button" type="submit" aria-label="Сохранить">Сохранить</button>
-        </form>
+<section class="popups">
+    <div class="popup popup_editForm">
+            <form class="edit-form edit-form_profile" name="edit-form_profile">
+                <button class="popup__close-button transition" type="button" aria-label="Закрыть"></button>
+                <h2 class="edit-form__header">Редактировать профиль</h2>
+                <input class="edit-form__input edit-form__input_value_name" type="text" name="edit-form__name" value="" required>
+                <input class="edit-form__input edit-form__input_value_about" type="text" name="edit-form__about" value="" required>
+                <button class="edit-form__button" type="submit" aria-label="Сохранить">Сохранить</button>
+            </form>
+    </div>
+    <div class="popup popup_addCard">
+            <form class="edit-form edit-form_addCard" name="edit-form_addCard">
+                <button class="popup__close-button transition" type="button" aria-label="Закрыть"></button>
+                <h2 class="edit-form__header">Новое место</h2>
+                <input class="edit-form__input edit-form__input_value_place" placeholder="Название" type="text" name="edit-form__name" value="" required>
+                <input class="edit-form__input edit-form__input_value_placePhoto" placeholder="Ссылка на картинку" type="text" name="edit-form__about" value="" required>
+                <button class="edit-form__button" type="submit" aria-label="Создать">Создать</button>
+            </form>
+    </div>
+    <div class="popup popup_show-image">
+        <div class="popup__container">
+            <button class="popup__close-button transition" type="button" aria-label="Закрыть"></button>
+            <img class="popup__img" src="#" alt="#">
+            <h2 class="popup__title"></h2>
+        </div>
     </div>
 </section>
+ <template class="template">
+    <li class="elements__item">
+        <button class="elements__delete-btn transition" type="button" area-label="удалить"></button>
+        <img  class="elements__img" src="" alt="">
+        <div class="elements__title">
+            <h2 class="elements__title-text"></h2>
+            <button class="elements__like-icon" type="button" aria-label="Нравится">
+            </button>
+        </div>
+    </li>
+ </template>
 <script src="./scripts/script.js"></script> 
 </body>
 </html>
