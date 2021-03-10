@@ -35,7 +35,6 @@ function addClosePopupListener (item) {
   item.addEventListener('click', evt => {
     const popupToClose = evt.target.closest('.popup_opened');
     closePopup(popupToClose);
-    evt.stopPropagation();
     })};
 
 //Выбираю все кнопки закрыть
@@ -44,10 +43,15 @@ const closeButtons = document.querySelectorAll('.popup__close-button');
 closeButtons.forEach (function (item) {
   addClosePopupListener (item);
 });
+
 //Добавляю слушателя для закрытия по клику на любое свободное место попапов
 const popups = document.querySelectorAll('.popup');
 popups.forEach (function (item) {
-  addClosePopupListener (item);
+  item.addEventListener('click', evt => {
+    popupToClose = evt.target;
+    closePopup(popupToClose);
+    evt.stopPropagation();
+    })
 });
 
 //Закрытие поп-апа вариант 2 (добавить модификатор каждой кнопке"закрыть" и повесить слушателя на него)
