@@ -26,28 +26,29 @@ const popupShowImgTitle = document.querySelector('.popup__title');
 function openPopup(popup) {
     popup.classList.add('popup_opened');
 }
-
-//Закрытие поп-апопов 1 вариант 
-//Выбираю все кнопки закрыть
-const closeButton = document.querySelectorAll('.popup__close-button');
-//Закрытие по клику на эти кнопки
-closeButton.forEach (function (item) {
-  item.addEventListener('click', evt => {
-    const eventTarget = evt.target;
-    eventTarget.parentElement.parentElement.classList.remove('popup_opened');
-})});
-//Закрытие для форм через submit
+//Функция закрытия поп-апов
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
-//Закрытие по клику в любое свободное место попапов
-const popup = document.querySelectorAll('.popup');
-popup.forEach (function (item) {
+//Функция слушателя для закрытия попапа
+function addClosePopupListener (item) {
   item.addEventListener('click', evt => {
-    const eventTarget = evt.target;
-    eventTarget.classList.remove('popup_opened');
+    const popupToClose = evt.target.closest('.popup_opened');
+    closePopup(popupToClose);
     evt.stopPropagation();
-})});
+    })};
+
+//Выбираю все кнопки закрыть
+const closeButtons = document.querySelectorAll('.popup__close-button');
+//Добавляю слушателя для закрытия по клику на крестик
+closeButtons.forEach (function (item) {
+  addClosePopupListener (item);
+});
+//Добавляю слушателя для закрытия по клику на любое свободное место попапов
+const popups = document.querySelectorAll('.popup');
+popups.forEach (function (item) {
+  addClosePopupListener (item);
+});
 
 //Закрытие поп-апа вариант 2 (добавить модификатор каждой кнопке"закрыть" и повесить слушателя на него)
 /*
@@ -113,16 +114,17 @@ const initialCards = [
     //Клонирую темплейт
     const createdCard = cardTemplate.querySelector('.elements__item').cloneNode(true);
     //определяю атрибуты элементов
-    createdCard.querySelector('.elements__img').src = card.link;
+    const elementsImg = createdCard.querySelector('.elements__img');
+    elementsImg.src = card.link;
+    elementsImg.alt = card.name;
     createdCard.querySelector('.elements__title-text').textContent = card.name;
-    createdCard.querySelector('.elements__img').alt = card.name;
     //Навешиваю слушатель для лайка 
     createdCard.querySelector('.elements__like-icon').addEventListener('click', evt => {
       evt.target.classList.toggle('elements__like-icon_active');
     });
     //Навешиваю слушатель для иконки удаления
     createdCard.querySelector('.elements__delete-btn').addEventListener('click', evt => {
-      evt.target.parentElement.remove();
+      evt.target.closest('.elements__item').remove();
     });
     //Навешиваю слушатель для вызова попапа через картинку
     createdCard.querySelector('.elements__img').addEventListener('click', () => {
@@ -139,8 +141,7 @@ const initialCards = [
   //Функция рендера карточек
   function renderCards() {
     const result = initialCards.map(function(item) {
-        createNewCard = createCard(item);
-        return createNewCard;
+        return createCard(item);
     });
     cards.append(...result)
   }
@@ -159,5 +160,4 @@ const initialCards = [
   
 
   
-
 
