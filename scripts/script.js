@@ -46,7 +46,9 @@ const popups = document.querySelectorAll('.popup');
 popups.forEach (function (item) {
   item.addEventListener('click', evt => {
     popupToClose = evt.target;
-    closePopup(popupToClose);
+    if(popupToClose.classList.contains('popup_opened')) {
+      closePopup(popupToClose);
+    }
     evt.stopPropagation();
     })
 });
