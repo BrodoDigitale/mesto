@@ -30,18 +30,15 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
-//Функция слушателя для закрытия попапа
-function addClosePopupListener (item) {
-  item.addEventListener('click', evt => {
-    const popupToClose = evt.target.closest('.popup_opened');
-    closePopup(popupToClose);
-    })};
 
 //Выбираю все кнопки закрыть
 const closeButtons = document.querySelectorAll('.popup__close-button');
 //Добавляю слушателя для закрытия по клику на крестик
 closeButtons.forEach (function (item) {
-  addClosePopupListener (item);
+  item.addEventListener('click', evt => {
+  const popupToClose = evt.target.closest('.popup_opened');
+  closePopup(popupToClose);
+    });
 });
 
 //Добавляю слушателя для закрытия по клику на любое свободное место попапов
