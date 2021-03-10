@@ -6,8 +6,8 @@
 ### Ссылка на проект: brododigitale.github.io/mesto/
 
 Применяются технологии:
-* JavaScript
+* JavaScript - реализовано открытие поп-апов, редактирование профиля, функция удаления и добавления карточки с фото, функция лайков
 * HTML
 * CSS флексбокс, CSS грид, Media Queries
-* файловая структура БЭМ
+* файловая структура по БЭМ
 * работа по макету из фигмы: (https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
