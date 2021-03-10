@@ -82,27 +82,27 @@ addButton.addEventListener('click', () => {
 const initialCards = [
   {
     name: 'Чердынь',
-    link: '../images/Чердынь.jpg'
+    link: 'https://i.postimg.cc/ZncK5Bjp/image.jpg'
   },
   {
     name: 'Кунгур',
-    link: '../images/Кунгур.jpg'
+    link: 'https://i.postimg.cc/vB5ZCSVP/image.jpg'
   },
   {
     name: 'Хохловка',
-    link: '../images/Хохловка.jpg'
+    link: 'https://i.postimg.cc/rscwTCGq/image.jpg'
   },
   {
     name: 'Чусовая',
-    link: '../images/Чусовая.jpg'
+    link: 'https://i.postimg.cc/8Ppzn4PH/image.jpg'
   },
   {
     name: 'Пермь',
-    link: '../images/Пермь.jpg'
+    link: 'https://i.postimg.cc/Pfzq49hJ/image.jpg'
   },
   {
     name: 'Зюраткуль',
-    link: '../images/Зюраткуль.jpg'
+    link: 'https://i.postimg.cc/nLyLRtCj/image.jpg'
   }
 ]; 
 
