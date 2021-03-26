@@ -68,7 +68,6 @@ editButton.addEventListener('click', () => {
 });
 // Сохранение новых данных из  формы профиля
 profileForm.addEventListener ('submit', evt => {
-    evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileAbout.textContent = jobInput.value;
     closePopup(popupProfileEdit);
@@ -152,7 +151,6 @@ const initialCards = [
 
   //Добавление новой карточки
   formNewCard.addEventListener ('submit', evt => {
-    evt.preventDefault();
     const cardTitle = placeInput.value;
     const cardPhoto = placePhotoInput.value;
     const newCard = createCard({name: cardTitle, link: cardPhoto});
@@ -161,6 +159,83 @@ const initialCards = [
   });
 
   
+// В А Л И Д А Ц И Я  Ф О Р М 
+//Выбор объекта
+const object = {
+  formSelector: ".edit-form",
+  inputSelector: ".edit-form__input",
+  submitButtonSelector: ".edit-form__button",
+  inactiveButtonClass: "edit-form__button_disabled",
+  inputErrorClass: "edit-form__input_type_error",
+  errorClass: ".edit-form__error_visible"
+}
 
-  
+//Функция включения ошибки
+function showInputError (obj, input, form) {
+  const errorPlace = form.querySelector(`#${input.name}-error`);
+  errorPlace.textContent = input.validationMessage;
+  errorPlace.classList.add(obj.errorClass);
+  input.classList.add(obj.inputErrorClass);
+}
+//Функция скрытия ошибки
+function hideInputError (obj, input, form) {
+  input.classList.remove(obj.inputErrorClass);
+  const errorPlace = form.querySelector(`#${input.name}-error`);
+  errorPlace.textContent = '';
+  errorPlace.classList.remove(obj.errorClass);
+}
+//Функция валидации формы
+const isValid = (obj, input, form) => {
+  if(input.validity.valid) {
+    hideInputError(obj,input, form);
+  } else {
+    showInputError(obj, input, form);
+  }
+}
+//Проверка есть ли хоть одно невалидное поле
+const hasInvalidInput = (inputs) => {
+  return inputs.some = (input) => {
+    return !input.validity.valid;
+  }
+}
+//Отключение кнопки при невалидном инпуте
+const toggleButtonState = (form, inputs, obj) => {
+  button = form.querySelector(obj.submitButtonSelector);
+  if (hasInvalidInput(form, inputs)) {
+    // кнопка неактивна
+    button.classList.add(obj.inactiveButtonClass);
+    button.disabled = true;
+  } else {
+    // кнопка активна
+    button.classList.remove(obj.inactiveButtonClass);
+    button.disabled = false;
+  }
+}; 
+// Добавление обработчиков инпутам
+function setEventListeners (obj, form) {
+  const inputs = Array.from(form.querySelectorAll(obj.inputSelector));
+  inputs.forEach ((input) => {
+    input.addEventListener('input', () => {
+      isValid(obj, input, form);
+      hasInvalidInput(input);
+      toggleButtonState(form, inputs, obj);
 
+    });
+  });
+};
+
+//Добавление обработчиков формам
+const enableValidation = (obj) => {
+  const forms = Array.from(document.querySelectorAll(obj.formSelector));
+  forms.forEach((form) => {
+    form.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
+    setEventListeners(obj, form);
+  });
+}
+enableValidation(object);
+
+
+
+//Функция валидация кнопки

@@ -38,20 +38,24 @@
     </div>
 <section class="popups">
     <div class="popup popup_editForm">
-            <form class="edit-form edit-form_profile" name="edit-form_profile">
+            <form class="edit-form edit-form_profile" name="edit-form_profile" novalidate>
                 <button class="popup__close-button transition" type="button" aria-label="Закрыть"></button>
                 <h2 class="edit-form__header">Редактировать профиль</h2>
-                <input class="edit-form__input edit-form__input_value_name" type="text" name="edit-form__name" value="" required>
-                <input class="edit-form__input edit-form__input_value_about" type="text" name="edit-form__about" value="" required>
+                <input class="edit-form__input edit-form__input_value_name" type="text" name="edit-form__name" value="" required minlength="2" maxlength="40">
+                <span class="edit-form__error_visible" id="edit-form__name-error"></span>
+                <input class="edit-form__input edit-form__input_value_about" type="text" name="edit-form__about" value="" required minlength="2" maxlength="200">
+                <span class="edit-form__error_visible" id="edit-form__about-error"></span>
                 <button class="edit-form__button" type="submit" aria-label="Сохранить">Сохранить</button>
             </form>
     </div>
     <div class="popup popup_addCard">
-            <form class="edit-form edit-form_addCard" name="edit-form_addCard">
+            <form class="edit-form edit-form_addCard" name="edit-form_addCard" novalidate>
                 <button class="popup__close-button transition" type="button" aria-label="Закрыть"></button>
                 <h2 class="edit-form__header">Новое место</h2>
-                <input class="edit-form__input edit-form__input_value_place" placeholder="Название" type="text" name="edit-form__name" value="" required>
-                <input class="edit-form__input edit-form__input_value_placePhoto" placeholder="Ссылка на картинку" type="text" name="edit-form__about" value="" required>
+                <input class="edit-form__input edit-form__input_value_place" placeholder="Название" type="text" name="edit-form__placeName" value="" required minlength="3" maxlength="30">
+                <span class="edit-form__error_visible" id="edit-form__placeName-error"></span>
+                <input class="edit-form__input edit-form__input_value_placePhoto" placeholder="Ссылка на картинку" type="url" name="edit-form__placePhoto" value="" required>
+                <span class="edit-form__error_visible" id="edit-form__placePhoto-error"></span>
                 <button class="edit-form__button" type="submit" aria-label="Создать">Создать</button>
             </form>
     </div>
