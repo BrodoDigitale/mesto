@@ -1,6 +1,6 @@
 // В А Л И Д А Ц И Я  Ф О Р М 
 //Выбор объекта
-const object = {
+const validationConfig = {
     formSelector: ".edit-form",
     inputSelector: ".edit-form__input",
     submitButtonSelector: ".edit-form__button",
@@ -72,5 +72,5 @@ const object = {
     });
   }
   //Валидация!
-  enableValidation(object);
+  enableValidation(validationConfig);
   
