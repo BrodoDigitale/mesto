@@ -6,7 +6,7 @@ const object = {
     submitButtonSelector: ".edit-form__button",
     inactiveButtonClass: "edit-form__button_disabled",
     inputErrorClass: "edit-form__input_type_error",
-    errorClass: ".edit-form__error_visible"
+    errorClass: ".edit-form__error"
   }
   
   //Функция включения ошибки
@@ -71,5 +71,6 @@ const object = {
       setEventListeners(obj, form);
     });
   }
+  //Валидация!
   enableValidation(object);
   
