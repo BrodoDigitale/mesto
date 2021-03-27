@@ -25,10 +25,14 @@ const popupShowImgTitle = document.querySelector('.popup__title');
 //Функция открытия поп-апов
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+//добавляем возможность закрытия через ESC
+    document.addEventListener('keydown', escClosure);
 }
 //Функция закрытия поп-апов
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+//убираем возможность закрытия через ESC
+  document.removeEventListener('keydown', escClosure);
 }
 
 //Выбираю все кнопки закрыть
@@ -51,13 +55,21 @@ popups.forEach (function (item) {
     }
     evt.stopPropagation();
     })
-});
+  });
+  //Функция закрытия попапа через ESC
+  function escClosure(evt) {
+    if(evt.key === 'Escape'){
+      popup = document.querySelector('.popup_opened');
+      closePopup(popup);
+    }
+  };
 
 //Закрытие поп-апа вариант 2 (добавить модификатор каждой кнопке"закрыть" и повесить слушателя на него)
 /*
 closeButtonEditform.addEventListener('click', () => closePopup(popupProfileEdit));
 closeButtonAddcard.addEventListener('click', () => closePopup(popupNewCard));
 closeButtonShowImgPopup.addEventListener('click', () => closePopup(popupShowImg));*/
+
 
 //Р Е Д А К Т И Р О В А Н И Е  П Р О Ф И Л Я
 // слушатель для кнопки редактировать профиль 
@@ -78,6 +90,9 @@ addButton.addEventListener('click', () => {
     openPopup(popupNewCard);
     placePhotoInput.value = '';
     placeInput.value = '';
+    inputs = Array.from(formNewCard.querySelectorAll(object.inputSelector));
+    button = formNewCard.querySelector('.edit-form__button');
+    toggleButtonState(button, inputs, object);
 });
 
 //Р А Б О Т А  С  К А Р Т О Ч К А М И
@@ -157,85 +172,3 @@ const initialCards = [
     cards.prepend(newCard);
     closePopup(popupNewCard);
   });
-
-  
-// В А Л И Д А Ц И Я  Ф О Р М 
-//Выбор объекта
-const object = {
-  formSelector: ".edit-form",
-  inputSelector: ".edit-form__input",
-  submitButtonSelector: ".edit-form__button",
-  inactiveButtonClass: "edit-form__button_disabled",
-  inputErrorClass: "edit-form__input_type_error",
-  errorClass: ".edit-form__error_visible"
-}
-
-//Функция включения ошибки
-function showInputError (obj, input, form) {
-  const errorPlace = form.querySelector(`#${input.name}-error`);
-  errorPlace.textContent = input.validationMessage;
-  errorPlace.classList.add(obj.errorClass);
-  input.classList.add(obj.inputErrorClass);
-}
-//Функция скрытия ошибки
-function hideInputError (obj, input, form) {
-  input.classList.remove(obj.inputErrorClass);
-  const errorPlace = form.querySelector(`#${input.name}-error`);
-  errorPlace.textContent = '';
-  errorPlace.classList.remove(obj.errorClass);
-}
-//Функция валидации формы
-const isValid = (obj, input, form) => {
-  if(input.validity.valid) {
-    hideInputError(obj,input, form);
-  } else {
-    showInputError(obj, input, form);
-  }
-}
-//Проверка есть ли хоть одно невалидное поле
-const hasInvalidInput = (inputs) => {
-  return inputs.some = (input) => {
-    return !input.validity.valid;
-  }
-}
-//Отключение кнопки при невалидном инпуте
-const toggleButtonState = (form, inputs, obj) => {
-  button = form.querySelector(obj.submitButtonSelector);
-  if (hasInvalidInput(form, inputs)) {
-    // кнопка неактивна
-    button.classList.add(obj.inactiveButtonClass);
-    button.disabled = true;
-  } else {
-    // кнопка активна
-    button.classList.remove(obj.inactiveButtonClass);
-    button.disabled = false;
-  }
-}; 
-// Добавление обработчиков инпутам
-function setEventListeners (obj, form) {
-  const inputs = Array.from(form.querySelectorAll(obj.inputSelector));
-  inputs.forEach ((input) => {
-    input.addEventListener('input', () => {
-      isValid(obj, input, form);
-      hasInvalidInput(input);
-      toggleButtonState(form, inputs, obj);
-
-    });
-  });
-};
-
-//Добавление обработчиков формам
-const enableValidation = (obj) => {
-  const forms = Array.from(document.querySelectorAll(obj.formSelector));
-  forms.forEach((form) => {
-    form.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    });
-    setEventListeners(obj, form);
-  });
-}
-enableValidation(object);
-
-
-
-//Функция валидация кнопки
