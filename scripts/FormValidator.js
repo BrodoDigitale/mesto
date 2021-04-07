@@ -62,7 +62,7 @@ const validationConfig = {
   };
   
   //Добавление обработчиков формам
-  const enableValidation = (obj) => {
+ const enableValidation = (obj) => {
     const forms = Array.from(document.querySelectorAll(obj.formSelector));
     forms.forEach((form) => {
       form.addEventListener('submit', (evt) => {
@@ -73,4 +73,4 @@ const validationConfig = {
   }
   //Валидация!
   enableValidation(validationConfig);
-  
+  export {enableValidation, setEventListeners, toggleButtonState, hasInvalidInput, isValid, hideInputError, showInputError, validationConfig}
