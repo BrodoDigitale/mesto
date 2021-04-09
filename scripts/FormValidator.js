@@ -1,6 +1,6 @@
 // В А Л И Д А Ц И Я  Ф О Р М 
 //Выбор объекта
-const validationConfig = {
+export const validationConfig = {
     formSelector: ".edit-form",
     inputSelector: ".edit-form__input",
     submitButtonSelector: ".edit-form__button",
@@ -9,7 +9,69 @@ const validationConfig = {
     errorClass: ".edit-form__error"
   }
   
-  //Функция включения ошибки
+export class FormValidator {
+  constructor(obj) {
+    this._obj = obj
+  }
+  enableValidation(obj){
+    const forms = Array.from(document.querySelectorAll(obj.formSelector));
+    forms.forEach((form) => {
+      form.addEventListener('submit', (evt) => {
+        evt.preventDefault();
+      });
+      this._setEventListeners(obj, form);
+    });
+  }
+  _setEventListeners(obj, form){
+    const inputs = Array.from(form.querySelectorAll(obj.inputSelector));
+    const button = form.querySelector(obj.submitButtonSelector);
+    inputs.forEach ((input) => {
+      input.addEventListener('input', () => {
+        this._isValid(obj, input, form);
+        this.toggleButtonState(button, inputs, obj);
+      });
+    });
+  }
+  toggleButtonState(button, inputs, obj){
+    if (this._hasInvalidInput(inputs)) {
+      // кнопка неактивна
+      button.classList.add(obj.inactiveButtonClass);
+      button.setAttribute('disabled', true);
+    } else {
+      // кнопка активна
+      button.classList.remove(obj.inactiveButtonClass);
+      button.removeAttribute('disabled');
+    };
+  }; 
+  _hasInvalidInput(inputs){
+    return inputs.some(input => {
+    return !input.validity.valid;
+    })
+  }
+  _isValid (obj, input, form){
+    if(input.validity.valid) {
+      this.hideInputError(obj,input, form);
+    } else {
+      this.showInputError(obj, input, form);
+    }
+  }
+  hideInputError(obj, input, form){
+    input.classList.remove(obj.inputErrorClass);
+    const errorPlace = form.querySelector(`#${input.name}-error`);
+    errorPlace.textContent = '';
+    errorPlace.classList.remove(obj.errorClass);
+  }
+  showInputError(obj, input, form){
+    const errorPlace = form.querySelector(`#${input.name}-error`);
+    errorPlace.textContent = input.validationMessage;
+    errorPlace.classList.add(obj.errorClass);
+    input.classList.add(obj.inputErrorClass);
+  }
+}
+
+
+
+  /*//Функция включения ошибки
   function showInputError (obj, input, form) {
     const errorPlace = form.querySelector(`#${input.name}-error`);
     errorPlace.textContent = input.validationMessage;
@@ -72,5 +134,4 @@ const validationConfig = {
     });
   }
   //Валидация!
-  enableValidation(validationConfig);
-  export {enableValidation, setEventListeners, toggleButtonState, hasInvalidInput, isValid, hideInputError, showInputError, validationConfig}
+  enableValidation(validationConfig); */

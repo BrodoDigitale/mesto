@@ -1,37 +1,12 @@
-//Массив карточек:
-const initialCards = [
-    {
-      name: 'Чердынь',
-      link: 'https://i.postimg.cc/ZncK5Bjp/image.jpg'
-    },
-    {
-      name: 'Кунгур',
-      link: 'https://i.postimg.cc/vB5ZCSVP/image.jpg'
-    },
-    {
-      name: 'Хохловка',
-      link: 'https://i.postimg.cc/rscwTCGq/image.jpg'
-    },
-    {
-      name: 'Чусовая',
-      link: 'https://i.postimg.cc/8Ppzn4PH/image.jpg'
-    },
-    {
-      name: 'Пермь',
-      link: 'https://i.postimg.cc/Pfzq49hJ/image.jpg'
-    },
-    {
-      name: 'Зюраткуль',
-      link: 'https://i.postimg.cc/nLyLRtCj/image.jpg'
-    }
-  ]; 
 
 //К Л А С С  К А Р Т О Ч К И
+import { openPopup } from './Utils.js'
 export class Card {
     //создание конструктра класса карточки
-    constructor (text, image) {
+    constructor (text, image, openPopup) {
         this._text = text
         this._image = image
+        this._openPopup = openPopup
     }
     //создание шаблрна разметки внутри класса
     _getTemplate() {
@@ -42,7 +17,7 @@ export class Card {
         return cardTemplate
     }
     //навешивание слушателей
-    _setEventListeners(){
+    _setEventListeners(openPopup){
    //Навешиваю слушатель для лайка 
       this._element.querySelector('.elements__like-icon').addEventListener('click', evt => {
       evt.target.classList.toggle('elements__like-icon_active')
@@ -53,16 +28,17 @@ export class Card {
     });
     //Навешиваю слушатель для вызова попапа через картинку
     this._element.querySelector('.elements__img').addEventListener('click', () => {
+      const popupShowImg = document.querySelector('.popups .popup_show-image')
       openPopup(popupShowImg);
-      popupShowImgPicture.src = this._image
-      popupShowImgPicture.alt = this._text
-      popupShowImgTitle.textContent = this._text
+      document.querySelector('.popup__img').src = this._image
+      document.querySelector('.popup__title').alt = this._text
+      document.querySelector('.popup__title').textContent = this._text
     });
     }
     //Публичный метод для добавления данных в карточку и ее отрисовки в DOM
     generateCard(){
       this._element = this._getTemplate()
-      this._setEventListeners()
+      this._setEventListeners(openPopup)
       this._element.querySelector('.elements__img').src = this._image
       this._element.querySelector('.elements__img').alt = this._text
       this._element.querySelector('.elements__title-text').textContent = this._text 
@@ -70,16 +46,9 @@ export class Card {
     }
 }
 
- //Функция рендера карточек
-function renderCards(items) {
-  items.forEach ((item) => {
-   const card = new Card (item.name, item.link)
-   const cardElement = card.generateCard()
-   //Выбираю контейнер карточек (куда вставлять)
-   document.querySelector('.elements__list').append(cardElement)
- })}
 
-renderCards(initialCards)
+
+
 
 
 
