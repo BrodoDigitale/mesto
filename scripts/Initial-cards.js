@@ -24,4 +24,4 @@ export const initialCards = [
       name: 'Зюраткуль',
       link: 'https://i.postimg.cc/nLyLRtCj/image.jpg'
     }
-  ]; 
+  ]
