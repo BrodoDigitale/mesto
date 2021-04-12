@@ -38,8 +38,9 @@ export class Card {
     this._element.querySelector('.elements__img').addEventListener('click', () => {
       const popupShowImg = document.querySelector('.popups .popup_show-image')
       openPopup(popupShowImg)
-      document.querySelector('.popup__img').src = this._image
-      document.querySelector('.popup__img').alt = this._text
+      const popupImg = document.querySelector('.popup__img')
+      popupImg.src = this._image
+      popupImg.alt = this._text
       document.querySelector('.popup__title').textContent = this._text
     })
     }
