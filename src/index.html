@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MESTO</title>
-    <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="body">
     <div class="root"> 
         <header class="header">
-                <img class="header__logo" src="./images/Logo_mesto.svg" alt="логотип Место">
+                <img class="header__logo" src="<%=require('./images/Logo_mesto.svg')%>" alt="логотип Место">
         </header>
         <main class="content">
             <section class="profile">
                 <div class="profile__info">
-                    <img class="profile__avatar" src="./images/Старик_Букашкин.jpg" alt="фото профиля">
+                    <img class="profile__avatar" src="<%=require('./images/Старик_Букашкин.jpg')%>" alt="фото профиля">
                     <div class="profile__grid">
                       <div class="profile__name-wrapper">
                         <h1 class="profile__name">Б.У. Кашкин</h1>
@@ -23,7 +22,7 @@
                       </div>
                         <p class="profile__about">Уральский поэт</p>
                     </div>
-                </div>
+                </div>npm i css-loader --save-dev
                 <button class="profile__add-button transition" type="button" aria-label="Добавить_изображение">
                 </button>
             </section>
@@ -78,6 +77,5 @@
         </div>
     </li>
  </template>
-<script src="./scripts/index.js" type="module"></script> 
 </body>
 </html>

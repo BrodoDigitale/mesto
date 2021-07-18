@@ -1,14 +1,13 @@
 
 //К Л А С С  К А Р Т О Ч К И
-import { openPopup } from './Utils.js'
 
 export class Card {
     //создание конструктра класса карточки
-    constructor (data, cardSelector, openPopup) {
+    constructor ({ data, cardSelector, handleCardClick }) {
         this._text = data.name
         this._image = data.link
         this._cardSelector = cardSelector
-        this._openPopup = openPopup
+        this._handleCardClick = handleCardClick
     }
     //создание шаблона разметки внутри класса
     _getTemplate() {
@@ -34,22 +33,16 @@ export class Card {
       })
     }
     //Обработчик для вызова попапа через картинку
-    _openImageEventListener(openPopup){
-    this._element.querySelector('.elements__img').addEventListener('click', () => {
-      const popupShowImg = document.querySelector('.popups .popup_show-image')
-      openPopup(popupShowImg)
-      const popupImg = document.querySelector('.popup__img')
-      popupImg.src = this._image
-      popupImg.alt = this._text
-      document.querySelector('.popup__title').textContent = this._text
-    })
-    }
+    _openImageEventListener(){
+     this._element.querySelector('.elements__img').addEventListener('click', () => {
+     this._handleCardClick()
+    })}
     //Публичный метод для добавления данных в карточку и ее отрисовки в DOM
     generateCard(){
       this._element = this._getTemplate()
       this._likeEventListener()
       this._removeEventListener()
-      this._openImageEventListener(openPopup)
+      this._openImageEventListener()
       const cardImg = this._element.querySelector('.elements__img')
       const cardTitle = this._element.querySelector('.elements__title-text')
       cardImg.src = this._image
@@ -58,3 +51,4 @@ export class Card {
       return this._element
     }
 }
+
