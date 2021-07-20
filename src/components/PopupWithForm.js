@@ -4,24 +4,23 @@ export class PopupWithForm extends Popup {
     constructor ( { popupSelector, formSubmitHandler } ) {
         super({ popupSelector })
         this._formSubmitHandler = formSubmitHandler
+        this._form = this._popup.querySelector('.edit-form')
+        this._inputList = this._form.querySelectorAll('.edit-form__input');
     }
     _getInputValues() {
-        const placeInput = this._popup.querySelector('.edit-form__input_value_place')
-        const placePhotoInput = this._popup.querySelector('.edit-form__input_value_placePhoto')
-        const inputValues = {name: `${placeInput.value}`, link: `${placePhotoInput.value}`}
-        return inputValues
+        this._inputValues = {};
+        this._inputList.forEach(input => this._inputValues[input.name] = input.value);
+        return this._inputValues;
     }
     setEventListeners() {
+        this._form.addEventListener ('submit', evt => {
+            evt.preventDefault();
+            this._formSubmitHandler(this._getInputValues())
+        })
     super.setEventListeners()
-    this._popup.addEventListener ('submit', evt => {
-    this._formSubmitHandler()
-    this.close()
-    })
-
     }
     close() {
+        this._form.reset()
         super.close()
-        const form = this._popup.querySelector('.edit-form')
-        form.reset()
     }
 }

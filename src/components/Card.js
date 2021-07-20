@@ -19,30 +19,25 @@ export class Card {
         return newCardTemplate
     }
     //навешивание обработчиков
-    
-   //Обработчик для лайка 
-    _likeEventListener() {
+    _setEventListeners() {
+      //добавление лайка
       this._element.querySelector('.elements__like-icon').addEventListener('click', evt => {
       evt.target.classList.toggle('elements__like-icon_active')
-    })
-   }
-    //Обработчик для иконки удаления
-    _removeEventListener() {
-        this._element.querySelector('.elements__delete-btn').addEventListener('click', evt => {
-        evt.target.closest('.elements__item').remove()
+      })
+      //добавление корзины
+      this._element.querySelector('.elements__delete-btn').addEventListener('click', evt => {
+      evt.target.closest('.elements__item').remove()
+      })
+      //добавление вызова попапа
+      this._element.querySelector('.elements__img').addEventListener('click', () => {
+      this._handleCardClick()
       })
     }
-    //Обработчик для вызова попапа через картинку
-    _openImageEventListener(){
-     this._element.querySelector('.elements__img').addEventListener('click', () => {
-     this._handleCardClick()
-    })}
+
     //Публичный метод для добавления данных в карточку и ее отрисовки в DOM
     generateCard(){
       this._element = this._getTemplate()
-      this._likeEventListener()
-      this._removeEventListener()
-      this._openImageEventListener()
+      this._setEventListeners()
       const cardImg = this._element.querySelector('.elements__img')
       const cardTitle = this._element.querySelector('.elements__title-text')
       cardImg.src = this._image

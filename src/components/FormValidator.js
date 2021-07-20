@@ -1,18 +1,10 @@
 // В А Л И Д А Ц И Я  Ф О Р М 
-//ОБЪЕКТ
-export const validationConfig = {
-    formSelector: ".edit-form",
-    inputSelector: ".edit-form__input",
-    submitButtonSelector: ".edit-form__button",
-    inactiveButtonClass: "edit-form__button_disabled",
-    inputErrorClass: "edit-form__input_type_error",
-    errorClass: ".edit-form__error"
-  }
+
 //КЛАСС ВАЛИДАЦИИ
 export class FormValidator {
-  constructor(obj, form) {
+  constructor(obj, formSelector) {
     this._obj = obj
-    this._form = form
+    this._form = document.querySelector(formSelector)
     this._inputs = Array.from(this._form.querySelectorAll(this._obj.inputSelector))
     this._button = this._form.querySelector(this._obj.submitButtonSelector)
   }
@@ -61,13 +53,13 @@ export class FormValidator {
 //Функция показа ошибки
   hideInputError(input){
     input.classList.remove(this._obj.inputErrorClass)
-    const errorPlace = this._form.querySelector(`#${input.name}-error`)
+    const errorPlace = this._form.querySelector(`#${input.id}-error`)
     errorPlace.textContent = ''
     errorPlace.classList.remove(this._obj.errorClass)
   }
 //Функция скрытия ошибки
   showInputError(input){
-    const errorPlace = this._form.querySelector(`#${input.name}-error`)
+    const errorPlace = this._form.querySelector(`#${input.id}-error`)
     errorPlace.textContent = input.validationMessage
     errorPlace.classList.add(this._obj.errorClass)
     input.classList.add(this._obj.inputErrorClass)

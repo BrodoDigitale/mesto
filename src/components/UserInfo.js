@@ -1,17 +1,17 @@
 export class UserInfo {
-    constructor({nameSelector, infoSelector}) {
+    constructor( { nameSelector, infoSelector } ) {
         this._nameSelector = document.querySelector(nameSelector)
         this._infoSelector = document.querySelector(infoSelector)
     }
     getUserInfo() {
         return  { 
-        actualName: this._nameSelector.textContent, 
-        actualInfo: this._infoSelector.textContent
+        name: this._nameSelector.textContent, 
+        info: this._infoSelector.textContent
     }
 
     }
-    setUserInfo( newName, newInfo) {
-            this._nameSelector.textContent = newName.value
-            this._infoSelector.textContent = newInfo.value
+    setUserInfo(userData) {
+            this._nameSelector.textContent = userData.userName
+            this._infoSelector.textContent = userData.userInfo
     }
 }
