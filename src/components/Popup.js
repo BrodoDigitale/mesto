@@ -1,7 +1,6 @@
 export class Popup {
     constructor({ popupSelector }) {
         this._popup = document.querySelector(popupSelector)
-        this.close = this.close.bind(this)
         this._handleEscClose = this._handleEscClose.bind(this)
     }
   
@@ -21,7 +20,6 @@ export class Popup {
         document.addEventListener('keydown', this._handleEscClose)
     }
     setEventListeners() {
-        this._handleEscClose(this)
         this._popup.addEventListener('click', (evt) => {
               if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button')) {
                 this.close()
