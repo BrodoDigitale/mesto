@@ -1,4 +1,4 @@
-import { UserInfo } from '../components/UserInfo.js'
+
 
 //Секция редактирования профиля
 // Кнопка открытия попапа редактирования профиля
@@ -8,18 +8,12 @@ const editButton = document.querySelector('.profile__edit-button')
 const profileName = document.querySelector('.edit-form__input_value_name')
 const profileAbout = document.querySelector('.edit-form__input_value_about')
 
-//Класс с информацией о пользователе
-const userInfo = new UserInfo ({ 
-    nameSelector: '.profile__name',  
-    infoSelector: '.profile__about',
-  }) 
-
 //Кнопка добавление карточки
 const addButton = document.querySelector('.profile__add-button')
 
 
 //Массив для отрисовки карточек:
-const initialCards = [
+/*const initialCards = [
     {
       name: 'Чусовая',
       link: 'https://i.postimg.cc/8Ppzn4PH/image.jpg'
@@ -44,7 +38,7 @@ const initialCards = [
         name: 'Хохловка',
         link: 'https://i.postimg.cc/rscwTCGq/image.jpg'
       },
-  ]
+  ]  */
 
 //Объект валидации
 const validationConfig = {
@@ -55,4 +49,4 @@ const validationConfig = {
     inputErrorClass: "edit-form__input_type_error",
     errorClass: ".edit-form__error"
   }
-  export { editButton, addButton, profileName, profileAbout, userInfo, initialCards, validationConfig }
+  export { editButton, addButton, profileName, profileAbout, validationConfig }

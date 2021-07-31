@@ -1,17 +1,24 @@
 export class Section {
-    constructor( {items, renderer}, containerSelector) {
-        this._items = items
+    constructor( {renderer}, containerSelector, api) {
         this._renderer = renderer
         this._container = document.querySelector(containerSelector)
+        this._api = api
     }
 //метод для отрисовки всех элементов
-    renderCards() {
-        this._items.forEach ((item) => {
+    renderCards(data) {
+        data.forEach ((item) => {
             this._renderer(item)
        })
     }
 // добавляет DOM элемент в контейнер
-        addItem(element) {
+    addItem(element) {
             this._container.prepend(element)
         }
+    saveItem(data) {
+        this._api
+            .addCard(data)
+            .then((res) => {
+                const newCard = {link: res.link, name: res.name}
+                this._renderer(newCard)}
+            )}
 }
