@@ -24,7 +24,7 @@
                       </div>
                         <p class="profile__about">Уральский поэт</p>
                     </div>
-                </div>npm i css-loader --save-dev
+                </div>
                 <button class="profile__add-button transition" type="button" aria-label="Добавить_изображение">
                 </button>
             </section>
@@ -40,7 +40,7 @@
 <section class="popups">
     <div class="popup popup_editForm">
             <form class="edit-form edit-form_profile" name="edit-form_profile" novalidate>
-                <button class="popup__close-button transition" type="button" aria-label="Закрыть"></button>
+                <button class="popup__close-button transition" type="button" area-label="Закрыть"></button>
                 <h2 class="edit-form__header">Редактировать профиль</h2>
                 <input class="edit-form__input edit-form__input_value_name" type="text" id="edit-form__name" name="userName" value="" required minlength="2" maxlength="40" placeholder="Имя">
                 <span class="edit-form__error" id="edit-form__name-error"></span>
@@ -51,7 +51,7 @@
     </div>
     <div class="popup popup_addCard">
             <form class="edit-form edit-form_addCard" name="edit-form_addCard" novalidate>
-                <button class="popup__close-button transition" type="button" aria-label="Закрыть"></button>
+                <button class="popup__close-button transition" type="button" area-label="Закрыть"></button>
                 <h2 class="edit-form__header">Новое место</h2>
                 <input class="edit-form__input edit-form__input_value_place" id="edit-form__placeName" placeholder="Название" type="text" name="name" value="" required minlength="3" maxlength="30">
                 <span class="edit-form__error" id="edit-form__placeName-error"></span>
@@ -62,29 +62,29 @@
     </div>
     <div class="popup popup_show-image">
         <div class="popup__container">
-            <button class="popup__close-button transition" type="button" aria-label="Закрыть"></button>
+            <button class="popup__close-button transition" type="button" area-label="Закрыть"></button>
             <img class="popup__img" src="#" alt="#">
             <h2 class="popup__title"></h2>
         </div>
     </div>
     <div class="popup popup_confirmation">
         <form class="edit-form edit-form_confirmation" name="edit-form_confirmation" novalidate>
-            <button class="popup__close-button transition" type="button" aria-label="Закрыть"></button>
+            <button class="popup__close-button transition" type="button" area-label="Закрыть"></button>
             <h2 class="edit-form__header edit-form__header_confirmation">Вы уверены?</h2>
             <button class="edit-form__button" type="submit" aria-label="Подтверждение">Да</button>
         </form>
     </div>
     <div class="popup popup_updateAvatar">
         <form class="edit-form edit-form_updateAvatar" name="edit-form_updateAvatar" novalidate>
-            <button class="popup__close-button transition" type="button" aria-label="Закрыть"></button>
+            <button class="popup__close-button transition" type="button" area-label="Закрыть"></button>
             <h2 class="edit-form__header">Обновить аватар</h2>
             <input class="edit-form__input edit-form__avatarLink" id="edit-form__avatarLink" placeholder="Ссылка на аватар" type="url" name="link" value="" required>
             <span class="edit-form__error" id="edit-form__avatarLink-error"></span>
-            <button class="edit-form__button" type="submit" aria-label="Создать">Сохранить</button>
+            <button class="edit-form__button" type="submit" aria-label="Сохранить">Сохранить</button>
         </form>
     </div>
 </section>
- <template class="template">
+ <template class="template" id="">
     <li class="elements__item">
         <button class="elements__delete-btn transition" type="button" area-label="удалить"></button>
         <img  class="elements__img" src="#" alt="#">
