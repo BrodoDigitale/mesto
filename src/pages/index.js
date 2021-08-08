@@ -24,10 +24,12 @@ const mestoApi = new Api({
 const delPopup = new PopupDelete ({
   popupSelector: '.popup_confirmation',
   formSubmitHandler: (card) => {
-      mestoApi.deleteCard(card._id).then(() => {
+      mestoApi.deleteCard(card._id)
+      .then(() => {
       card.deleteCard()
-    })
       delPopup.close()
+    })
+      .catch(err => console.log(err))
   }
 })
 delPopup.setEventListeners()
@@ -41,20 +43,23 @@ const popupNewCard = new PopupWithForm ({
     .then((res) => {
         const newCard = cardGenerator(res, myId, '.template') 
         cardList.addItem(newCard)
+        popupNewCard.close()
       })
       .catch(err => console.log(err))
       .finally(() => {
       popupNewCard.renderLoading(false)
     })
-    popupNewCard.close()
   }
 })
 popupNewCard.setEventListeners()
+const popupNewCardValidator = new FormValidator(validationConfig, '.edit-form_addCard')
+popupNewCardValidator.enableValidation()
 
 //Вызов попапа с формой для добавления карточки
 addButton.addEventListener('click', () => {
   popupNewCard.open()
-  enableValidation(validationConfig, '.edit-form_addCard')
+  popupNewCardValidator.clearErrors()
+  popupNewCardValidator.toggleButtonState()
 })
 
 // Класс юзера
@@ -72,20 +77,23 @@ const popupUpdateAvatar = new PopupWithForm ({
     mestoApi.updateAvatar(inputValues.link)
     .then((res) => {
       userInfo.setAvatar(res) 
+      popupUpdateAvatar.close()
     })
     .catch(err => console.log(err))
     .finally(() => {
     popupUpdateAvatar.renderLoading(false)
     })
-    popupUpdateAvatar.close()
   }
  })
  popupUpdateAvatar.setEventListeners()
+ const popupUpdateAvatarValidator = new FormValidator(validationConfig, '.popup_updateAvatar')
+ popupUpdateAvatarValidator.enableValidation()
 
  //Вызов попапа редактирования аватара
 avatarButton.addEventListener('click', () => {
   popupUpdateAvatar.open()
-  enableValidation(validationConfig, '.edit-form_updateAvatar')
+  popupUpdateAvatarValidator.clearErrors()
+  popupUpdateAvatarValidator.toggleButtonState()
 })
 
 //Создание попапа для редактирвоания профиля
@@ -96,34 +104,33 @@ const popupProfile = new PopupWithForm ({
     mestoApi.updateUserData(inputValues)
     .then((res) => {
       userInfo.setUserInfo(res)
+      popupProfile.close() 
     })
     .catch(err => console.log(err))
     .finally(() => {
     popupProfile.renderLoading(false)
     })
-    popupProfile.close() 
   }
  })
  popupProfile.setEventListeners()
+ const popupProfileValidator = new FormValidator(validationConfig, '.popup_editForm')
+ popupProfileValidator.enableValidation()
 
 // Функция вызова попапа редактирования профиля
 
   editButton.addEventListener('click', () => {
      popupProfile.open()
+     popupProfileValidator.clearErrors()
+     popupProfileValidator.toggleButtonState()
      const actualInfo = userInfo.getUserInfo()
      profileName.value = actualInfo.name
      profileAbout.value = actualInfo.info
-     enableValidation(validationConfig, '.edit-form_profile')
     })
   
+//Создание попапа увеличениия картинки карточки
+const popupPreview = new PopupWithImage ('.popup_show-image')
 
-//КЛАСС ВАЛИДАЦИИ
-function enableValidation(config, selector) {
-  const validator = new FormValidator(config, selector)
-  validator.enableValidation()
-  validator.clearErrors()
-  validator.toggleButtonState()
-}
+popupPreview.setEventListeners()
 
 //КОНТЕЙНЕР КАРТОЧЕК
  
@@ -143,26 +150,20 @@ function cardGenerator(cardData,id, selector) {
       data: cardData, 
       userId: id,
       cardSelector: selector,
-      handleCardClick: () => {
-        const popupPreview = new PopupWithImage ({ 
-          popupSelector: '.popup_show-image', 
-          data: cardData
-        })
-        popupPreview.open()
-        popupPreview.setEventListeners()
+      handleCardClick: () => { 
+        popupPreview.open(cardData.link, cardData.name) 
     },
       handlelikeClick: (cardData, cardId) => {
-        const isLiked = card.isLiked()
-      if(isLiked){
+      if(card.isLiked()){
         mestoApi.deleteLike(cardId)
         .then((res) => {
-          cardData.updateLikes(res.likes.length)
+          cardData.updateLikes(res)
         })
         .catch(err => console.log(err));
       } else {
         mestoApi.putLike(cardId)
         .then((res) => {
-          cardData.updateLikes(res.likes.length)
+          cardData.updateLikes(res)
         })
         .catch(err => console.log(err));
       }

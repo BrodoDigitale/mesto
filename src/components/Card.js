@@ -33,31 +33,40 @@ export class Card {
       //добавление вызова попапа
       this._element.querySelector('.elements__img').addEventListener('click', () => this._handleCardClick())
     }
-    _checkId() {
+    _displayBin() {
       if(this._ownerId !== this._myId) {
       this._element.querySelector('.elements__delete-btn').classList.add('elements__delete-btn_disabled')
       } 
     }
-    isLiked() {
-      return this._likeButton.classList.contains('elements__like-icon_active')
-  
+    _displayLiked() {
+      if (this.isLiked()) {
+        this._likeButton.classList.add('elements__like-icon_active')
+      }
     }
-    updateLikes(number) {
+    isLiked() {
+      return this._likes.some((like) => {
+        return like._id == this._myId   
+      })
+    }
+
+    updateLikes(data) {
       this._likeButton.classList.toggle('elements__like-icon_active')
-      this._likesCounter.textContent = number
+      this._likesCounter.textContent = data.likes.length
+      this._likes = data.likes
     }
     //Публичный метод для добавления данных в карточку и ее отрисовки в DOM
     generateCard(){
       this._element = this._getTemplate()
-      this._checkId()
       this._likeButton = this._element.querySelector('.elements__like-icon')
       this._cardImg = this._element.querySelector('.elements__img')
       this._cardTitle = this._element.querySelector('.elements__title-text')
       this._likesCounter = this._element.querySelector('.elements__like-number')
+      this._likesCounter.textContent = this._likes.length
       this._cardImg.src = this._image
       this._cardImg.alt = this._text
       this._cardTitle.textContent = this._text
-      this._element.querySelector('.elements__like-number').textContent = this._likes.length
+      this._displayBin()
+      this._displayLiked()
       this._setEventListeners()
       return this._element
     }

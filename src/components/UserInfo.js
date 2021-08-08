@@ -8,10 +8,9 @@ export class UserInfo {
     }
     getUserInfo() {
         return  { 
-        name: this.name, 
-        info: this.info
+        name: this._nameSelector.textContent, 
+        info: this._infoSelector.textContent
     }
-
     }
     setUserInfo(data) {
             this._nameSelector.textContent = data.name
