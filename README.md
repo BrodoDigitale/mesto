@@ -1,13 +1,13 @@
-# Проект "Mesto"
-## Обзор
-Воображаемый сервис Mesto представляет собой главную страницу соцсети для работы с фотографиями (по типу инстаграма).
+## Vanilla JS Mesto Project
+### Functionality
 
+Instagram-like one-page web application which functionality allows to add, share and delete photos.
 
-### Ссылка на проект: brododigitale.github.io/mesto/
+[Project](brododigitale.github.io/mesto/) is based on [this Figma layout]((https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)) and written on vanilla JS using OOP principles and BEM methodology.  
 
-Применяются технологии:
-* JavaScript - реализовано открытие поп-апов, редактирование профиля, функция удаления и добавления карточки с фото, функция лайков
+### Tech stack
+* JavaScript 
 * HTML
-* CSS флексбокс, CSS грид, Media Queries
-* файловая структура по БЭМ
-* работа по макету из фигмы: (https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+* CSS flexbox, CSS grid, Media Queries
+* BEM methodology
+* OOP priniciples
