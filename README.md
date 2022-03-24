@@ -10,6 +10,8 @@ Instagram-like one-page web application which functionality allows to add, share
 * CSS flexbox, CSS grid, Media Queries
 * Webpack
 * BEM methodology
-* OOP priniciples  
+* OOP priniciples
+
+
 ![Mesto Project](/src/images/mesto_preview_640px.png)
 
