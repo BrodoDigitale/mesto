@@ -9,5 +9,6 @@ Instagram-like one-page web application which functionality allows to add, share
 * JavaScript 
 * HTML
 * CSS flexbox, CSS grid, Media Queries
+* Webpack
 * BEM methodology
 * OOP priniciples
